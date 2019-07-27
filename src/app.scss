@@ -1,0 +1,16 @@
+@import './core';
+
+.app-container {
+    width: 100%;
+    margin: 0;
+    padding: 16px;
+    background-color: white;
+
+    display: grid;
+    grid-template-areas: 'header header' 'picker list';
+
+    header {
+        grid-area: header;
+        text-align: center;
+    }
+}

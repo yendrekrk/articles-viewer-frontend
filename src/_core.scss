@@ -1,0 +1,32 @@
+// constants:
+$themeColor: #F4B416;
+
+// mixins:
+$widthSM: 599px;
+$widthMD: 959px;
+$widthLG: 1279px;
+$widthXL: 1919px;
+
+@mixin mediaSM {
+  @media (max-width: #{$widthSM}) {
+    @content;
+  }
+}
+
+@mixin mediaMD {
+  @media (max-width: #{$widthMD}) {
+    @content;
+  }
+}
+
+@mixin mediaLG {
+  @media (max-width: #{$widthLG}) {
+    @content;
+  }
+}
+
+@mixin mediaXL {
+  @media (max-width: #{$widthXL}) {
+    @content;
+  }
+}

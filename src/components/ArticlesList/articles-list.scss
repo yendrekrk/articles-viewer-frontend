@@ -1,0 +1,18 @@
+@import '../../core';
+
+.articles-list {
+    max-width: 1100px;
+    margin-right: auto;
+    grid-area: list;
+
+    &-header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        cursor: pointer;
+        height: 60px;
+        svg {
+            fill: $themeColor;
+        }
+    }
+}
