@@ -1,21 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import Truncate from 'react-truncate'
 
 import './article.scss'
 
 const article = props => {
+    const [displayImg, setDisplayImg] = useState(true);
     const { date, image, title, preamble } = props;
+
     return (
         <div className='article'>
-            <div className='article-img'>
-                <img src={image}/>
-            </div>
-            <div className='article-text'>
-                <div>
+            {
+                displayImg && (
+                    <div className='article-img'>
+                        <img src={image} onError={() => setDisplayImg(false)} />
+                    </div>
+                )
+            }
+            <div className={`article-text ${displayImg ? '' : 'no-img-padding'}`} >
+                <div className='article-lead'>
                     <h2>{title}</h2>
                     <h4>{date}</h4>
                 </div>
-                <p>{preamble}</p>
+                <div className='article-preamble'>
+                    <Truncate lines={2} trimWhitespace={true}>{preamble}</Truncate>
+                </div>
             </div>
         </div>
     )

@@ -9,14 +9,16 @@ const topicFilter = props => {
         <div className='topic-filter'>
             <div>
                 <h3>Topics:</h3>
-                <label class="custom-checkbox">Fashion
+                <div>
+                    <label className='custom-checkbox'>Fashion
                     <input name='fashion' type='checkbox' checked={topics.includes('fashion')} onChange={e => handleTopicChange(e)} />
-                    <span class="checkmark" />
-                </label>
-                <label class="custom-checkbox">Sports
+                        <span className='checkmark' />
+                    </label>
+                    <label className='custom-checkbox'>Sports
                     <input name='sports' type='checkbox' checked={topics.includes('sports')} onChange={e => handleTopicChange(e)} />
-                    <span class="checkmark" />
-                </label>
+                        <span className='checkmark' />
+                    </label>
+                </div>
             </div>
         </div>
     )

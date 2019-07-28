@@ -1,18 +1,38 @@
 @import '../../core';
 
 .articles-list {
-    max-width: 1100px;
+    max-width: 1000px;
     margin-right: auto;
     grid-area: list;
+    padding-top: 60px;
+
+    @include mediaMD {
+        padding: 0;
+        width: 100%;
+    }
 
     &-header {
+        width: 100%;
+        max-width: 1000px;
+        margin-right: auto;
+        grid-area: list;
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        cursor: pointer;
         height: 60px;
+
+        &>div {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
         svg {
             fill: $themeColor;
+        }
+
+        @include mediaMD {
+            grid-area: picker;
         }
     }
 }

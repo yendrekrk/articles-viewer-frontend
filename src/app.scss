@@ -7,10 +7,31 @@
     background-color: white;
 
     display: grid;
-    grid-template-areas: 'header header' 'picker list';
+    grid-template-areas: 'header header''picker list';
 
     header {
         grid-area: header;
         text-align: center;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &>header>svg {
+        fill: $themeColor;
+        width: 40px;
+        height: 40px;
+    }
+
+    @include mediaMD {
+        grid-template-areas: 'header''picker''list';
+
+        header {
+            margin-bottom: 16px;
+        }
+    }
+
+    @include mediaSM {
+        padding: 12px;
     }
 }

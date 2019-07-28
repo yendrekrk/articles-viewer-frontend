@@ -1,11 +1,17 @@
 // constants:
 $themeColor: #F4B416;
+$themeColorLighten: #fce9b9;
 
 // mixins:
+$widthXS: 400px;
 $widthSM: 599px;
-$widthMD: 959px;
-$widthLG: 1279px;
-$widthXL: 1919px;
+$widthMD: 1024px;
+
+@mixin mediaXS {
+  @media (max-width: #{$widthXS}) {
+    @content;
+  }
+}
 
 @mixin mediaSM {
   @media (max-width: #{$widthSM}) {
@@ -15,18 +21,6 @@ $widthXL: 1919px;
 
 @mixin mediaMD {
   @media (max-width: #{$widthMD}) {
-    @content;
-  }
-}
-
-@mixin mediaLG {
-  @media (max-width: #{$widthLG}) {
-    @content;
-  }
-}
-
-@mixin mediaXL {
-  @media (max-width: #{$widthXL}) {
     @content;
   }
 }

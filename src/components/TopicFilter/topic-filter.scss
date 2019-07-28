@@ -4,10 +4,23 @@
     grid-area: picker;
     display: flex;
     justify-content: flex-end;
-    padding: 60px 32px 0 0;
+    padding: 60px 24px 0 0;
 
     h3 {
         margin-bottom: 8px;
+    }
+
+    @include mediaMD {
+        padding: 0;
+        justify-content: flex-start;
+
+        h3 {
+            margin: 0;
+        }
+
+        &>div>div {
+            display: inline-flex;
+        }
     }
 }
 
@@ -15,7 +28,7 @@
     display: block;
     position: relative;
     padding-left: 28px;
-    margin-bottom: 12px;
+    margin: 8px 16px 12px 0;
     cursor: pointer;
     font-size: 17px;
     -webkit-user-select: none;
@@ -50,7 +63,7 @@
 }
 
 .custom-checkbox:hover input~.checkmark {
-    background-color: #ddd;
+    background-color: $themeColorLighten;
 }
 
 .custom-checkbox input:checked~.checkmark {

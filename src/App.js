@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-const baseURL = 'http://localhost:6010/articles';
-const MAX_RETRIES = 2;
-
-import ArticlesList from './components/ArticlesList/ArticlesList'
 import TopicFilter from './components/TopicFilter/TopicFilter'
+import ArticlesList from './components/ArticlesList/ArticlesList'
+import LogoIcon from './assets/icons/logo.svg'
 
 import './app.scss'
+
+const MAX_RETRIES = 2;
+const baseURL = 'http://localhost:6010/articles';
 
 class App extends Component {
     constructor(props) {
@@ -98,11 +99,11 @@ class App extends Component {
         return (
             <div className='app-container'>
                 <header>
+                    <LogoIcon/>
                     <h1>Article Viewer</h1>
                 </header>
-                
                 <TopicFilter topics={topics} handleTopicChange={this.handleTopicChange} />
-                < ArticlesList articles={articles} />
+                <ArticlesList articles={articles} />
             </div>
         )
     }

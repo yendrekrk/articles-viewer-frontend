@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { prepareArticle } from '../../utils'
 
@@ -26,16 +26,21 @@ const articlesList = props => {
     })
 
     return (
-        <div className='articles-list'>
-            <div className='articles-list-header' onClick={handleOrderChange}>
-                Sort by date 
-                <ArrowDown style={{
-                    transform: (order === 'asc') ? 'rotate(0deg)' : 'rotate(-180deg)',
-                    transition: 'transform 200ms',
-                }} />
+        <Fragment>
+            <div className='articles-list-header' >
+                <div onClick={handleOrderChange}>
+                    Sort by date
+                    <ArrowDown style={{
+                        transform: (order === 'asc') ? 'rotate(0deg)' : 'rotate(-180deg)',
+                        transition: 'transform 200ms',
+                    }} />
+                </div>
             </div>
-            {preparedArticles.map(article => <Article key={article.id} {...article} />)}
-        </div>
+            <div className='articles-list'>
+                {preparedArticles.map(article => <Article key={article.id} {...article} />)}
+            </div>
+        </Fragment>
+
     )
 }
 
