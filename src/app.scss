@@ -41,10 +41,6 @@
 
     @include mediaMD {
         grid-template-areas: 'header''picker''list';
-
-        header {
-            margin-bottom: 16px;
-        }
     }
 
     @include mediaSM {

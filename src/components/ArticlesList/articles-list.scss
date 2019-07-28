@@ -4,11 +4,12 @@
     max-width: 1000px;
     margin-right: auto;
     grid-area: list;
-    padding-top: 60px;
+    padding-top: 35px;
 
     @include mediaMD {
         padding: 0;
         width: 100%;
+        margin-top: 16px;
     }
 
     &-header {
@@ -17,9 +18,9 @@
         margin-right: auto;
         grid-area: list;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: flex-end;
-        height: 60px;
+        height: 35px;
 
         &>div {
             display: flex;
@@ -33,6 +34,8 @@
 
         @include mediaMD {
             grid-area: picker;
+            height: 53px;
+            align-items: flex-end;
         }
     }
 }
