@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import axios from 'axios'
 
 import TopicFilter from './components/TopicFilter/TopicFilter'
 import ArticlesList from './components/ArticlesList/ArticlesList'
+import LoadingIndicator from './components/LoadingIndicator/LoadingIndicator'
 import LogoIcon from './assets/icons/logo.svg'
 
 import './app.scss'
@@ -48,32 +49,14 @@ class App extends Component {
                     articles: articles,
                 })
             })
-            .catch(error => {
+            .catch(() => {
                 const { retries } = this.state;
                 if (retries < MAX_RETRIES) {
                     return setTimeout(this.setState({ retries: retries + 1 }, this.getArticles()),
                         (2 ** retries) * 100)
                 } else {
-                    return this.setState({ sending: false, error: true })
+                    return this.setState({ sending: false, error: true, articles: [] })
                 }
-                // if (error.response) {
-                //     if (error.response.status === 404) {
-                //         return this.setState({ sending: false, error: true })
-                //     } else if (error.response.status === 500) {
-                //         const { retries } = this.state;
-                //         if (retries < MAX_RETRIES) {
-                //             return setTimeout(this.setState({ retries: retries + 1 }, this.getArticles()),
-                //                 Math.pow(2, retries) * 100)
-                //         } else {
-                //             return this.setState({ sending: false, error: true })
-                //         }
-                //     }
-                // } else if (error.request) {
-                //     console.log('Request error', error.request);
-                // } else {
-                //     // Something happened in setting up the request that triggered an Error
-                //     console.log('Error', error.message);
-                // }
             })
     }
 
@@ -99,11 +82,20 @@ class App extends Component {
         return (
             <div className='app-container'>
                 <header>
-                    <LogoIcon/>
-                    <h1>Article Viewer</h1>
+                    <div>
+                        <LogoIcon />
+                        <h1>Article Viewer</h1>
+                    </div>
+                    {error && <p>Couldn't fetch the articles, please try again in a minute.</p>}
+                    <LoadingIndicator style={{opacity: sending ? '1': '0'}}/>
                 </header>
-                <TopicFilter topics={topics} handleTopicChange={this.handleTopicChange} />
-                <ArticlesList articles={articles} />
+                {articles.length !== 0 ? (
+                    <Fragment>
+                        <TopicFilter topics={topics} handleTopicChange={this.handleTopicChange} />
+                        <ArticlesList articles={articles} />
+                    </Fragment>
+                ) : null}
+
             </div>
         )
     }

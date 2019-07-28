@@ -7,17 +7,33 @@
     background-color: white;
 
     display: grid;
-    grid-template-areas: 'header header''picker list';
+    grid-template-areas:
+        'header header'
+        'picker list';
 
     header {
         grid-area: header;
         text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    &>header>div {
         display: inline-flex;
         justify-content: center;
         align-items: center;
     }
 
-    &>header>svg {
+    &>header>p {
+        font-size: 20px;
+        font-weight: 500;
+        margin: 16px;
+        text-align: center;
+    }
+
+    &>header>div>svg {
         fill: $themeColor;
         width: 40px;
         height: 40px;
